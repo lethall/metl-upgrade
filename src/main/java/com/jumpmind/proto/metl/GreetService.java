@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.jumpmind.proto.metl;
 
 public class GreetService {
 

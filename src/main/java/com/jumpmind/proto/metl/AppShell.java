@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.jumpmind.proto.metl;
 
 import com.vaadin.flow.component.page.AppShellConfigurator;
 import com.vaadin.flow.server.PWA;
