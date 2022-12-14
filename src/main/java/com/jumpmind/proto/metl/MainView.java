@@ -17,14 +17,12 @@ import com.vaadin.flow.router.Route;
 @CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
 public class MainView extends VerticalLayout {
 
-    public MainView() {
+    public MainView(GreetService greetService) {
         // Use TextField for standard text input
         TextField textField = new TextField("Your name");
 
         // Button click listeners can be defined as lambda expressions
-        GreetService greetService = new GreetService();
-        Button button = new Button("Say hello",
-                e -> Notification.show(greetService.greet(textField.getValue())));
+        Button button = new Button("Say hello", e -> Notification.show(greetService.greet(textField.getValue())));
 
         // Theme variants give you predefined extra styles for components.
         // Example: Primary button is more prominent look.

@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class App {
 
 	public static void main(String[] args) {
+		System.out.println("Starting Metl - give it time to download the plugins!");
 		SpringApplication.run(App.class, args);
 	}
 
