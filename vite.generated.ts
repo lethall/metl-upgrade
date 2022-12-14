@@ -8,9 +8,9 @@ import path from 'path';
 import { readFileSync, existsSync, writeFileSync, mkdirSync } from 'fs';
 import * as net from 'net';
 
-import { processThemeResources } from './target/plugins/application-theme-plugin/theme-handle.js';
-import { rewriteCssUrls } from './target/plugins/theme-loader/theme-loader-utils.js';
-import settings from './target/vaadin-dev-server-settings.json';
+import { processThemeResources } from './build/plugins/application-theme-plugin/theme-handle.js';
+import { rewriteCssUrls } from './build/plugins/theme-loader/theme-loader-utils.js';
+import settings from './build/vaadin-dev-server-settings.json';
 import { defineConfig, mergeConfig, PluginOption, ResolvedConfig, UserConfigFn, OutputOptions, AssetInfo, ChunkInfo } from 'vite';
 import { getManifest } from 'workbox-build';
 
@@ -18,7 +18,7 @@ import * as rollup from 'rollup';
 import brotli from 'rollup-plugin-brotli';
 import replace from '@rollup/plugin-replace';
 import checker from 'vite-plugin-checker';
-import postcssLit from './target/plugins/rollup-plugin-postcss-lit-custom/rollup-plugin-postcss-lit.js';
+import postcssLit from './build/plugins/rollup-plugin-postcss-lit-custom/rollup-plugin-postcss-lit.js';
 
 const appShellUrl = '.';
 
