@@ -20,18 +20,10 @@
  */
 package org.jumpmind.metl.core.security;
 
-import static org.apache.commons.lang.StringUtils.isNotBlank;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.security.KeyStore;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.security.Security;
-import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.KeySpec;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.digest.DigestUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
@@ -39,11 +31,14 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.security.*;
+import java.security.spec.AlgorithmParameterSpec;
+import java.security.spec.KeySpec;
 
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.codec.digest.DigestUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 /**
  * @see ISecurityService
@@ -242,7 +237,7 @@ public class SecurityService implements ISecurityService {
             alg.update(randomBytes);
             byte hash[] = alg.digest();
             for (int i = 0; i < hash.length; i++) {
-                Integer c = new Integer(hash[i]);
+                Integer c = Integer.valueOf(hash[i]);
                 String hex = Integer.toHexString(c.intValue() + 128);
                 if (hex.length() == 1)
                     hex = "0" + hex;

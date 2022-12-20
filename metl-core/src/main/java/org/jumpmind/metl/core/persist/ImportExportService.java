@@ -20,23 +20,9 @@
  */
 package org.jumpmind.metl.core.persist;
 
-import static org.apache.commons.lang.StringUtils.isNotBlank;
-
-import java.io.IOException;
-import java.sql.JDBCType;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.apache.commons.lang.StringUtils;
 import org.apache.tools.ant.Project;
 import org.jumpmind.db.model.Column;
@@ -47,16 +33,7 @@ import org.jumpmind.db.sql.DmlStatement.DmlType;
 import org.jumpmind.db.sql.ISqlTemplate;
 import org.jumpmind.db.sql.ISqlTransaction;
 import org.jumpmind.db.sql.Row;
-import org.jumpmind.metl.core.model.AbstractObject;
-import org.jumpmind.metl.core.model.Agent;
-import org.jumpmind.metl.core.model.AuditEvent;
-import org.jumpmind.metl.core.model.Flow;
-import org.jumpmind.metl.core.model.FlowName;
-import org.jumpmind.metl.core.model.RelationalModel;
-import org.jumpmind.metl.core.model.RelationalModelName;
-import org.jumpmind.metl.core.model.ProjectVersion;
-import org.jumpmind.metl.core.model.Resource;
-import org.jumpmind.metl.core.model.ResourceName;
+import org.jumpmind.metl.core.model.*;
 import org.jumpmind.metl.core.security.ISecurityService;
 import org.jumpmind.metl.core.security.SecurityConstants;
 import org.jumpmind.metl.core.util.MessageException;
@@ -68,27 +45,31 @@ import org.jumpmind.util.AppUtils;
 import org.jumpmind.util.LinkedCaseInsensitiveMap;
 import org.springframework.dao.DataIntegrityViolationException;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
+import java.io.IOException;
+import java.sql.JDBCType;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class ImportExportService extends AbstractService implements IImportExportService {
     
-    final static protected Integer TABLE = new Integer(0);
-    final static protected Integer SQL = new Integer(1);
-    final static protected Integer KEY_COLUMNS = new Integer(2);
+    final static protected Integer TABLE = Integer.valueOf(0);
+    final static protected Integer SQL = Integer.valueOf(1);
+    final static protected Integer KEY_COLUMNS = Integer.valueOf(2);
     
-    final static Integer PROJECT_IDX = new Integer(0);
-    final static Integer PROJECT_VERSION_IDX = new Integer(1);
-    final static Integer MODEL_IDX = new Integer(0);
-    final static Integer RESOURCE_IDX = new Integer(0);
-    final static Integer FLOW_IDX = new Integer(5);
-    final static Integer AGENT_IDX = new Integer(0);
+    final static Integer PROJECT_IDX = Integer.valueOf(0);
+    final static Integer PROJECT_VERSION_IDX = Integer.valueOf(1);
+    final static Integer MODEL_IDX = Integer.valueOf(0);
+    final static Integer RESOURCE_IDX = Integer.valueOf(0);
+    final static Integer FLOW_IDX = Integer.valueOf(5);
+    final static Integer AGENT_IDX = Integer.valueOf(0);
     
-    final static Integer CREATE_TIME_IDX = new Integer(0);
-    final static Integer LAST_UPDATE_TIME_IDX = new Integer(1);
-    final static Integer CREATE_BY_IDX = new Integer(2);
-    final static Integer LAST_UPDATE_BY_IDX = new Integer(3);
+    final static Integer CREATE_TIME_IDX = Integer.valueOf(0);
+    final static Integer LAST_UPDATE_TIME_IDX = Integer.valueOf(1);
+    final static Integer CREATE_BY_IDX = Integer.valueOf(2);
+    final static Integer LAST_UPDATE_BY_IDX = Integer.valueOf(3);
 
     final String[][] PROJECT_SQL = {
             {"_project","select * from %1$s_project where id in (select project_id from %1$s_project_version where id='%2$s') union select * from %1$s_project where id='%3$s' order by 1","id"},

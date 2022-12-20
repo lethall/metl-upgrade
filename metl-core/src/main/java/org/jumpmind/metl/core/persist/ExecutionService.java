@@ -20,22 +20,6 @@
  */
 package org.jumpmind.metl.core.persist;
 
-import static org.apache.commons.lang.StringUtils.isNotBlank;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
@@ -45,12 +29,7 @@ import org.jumpmind.db.sql.ISqlRowMapper;
 import org.jumpmind.db.sql.ISqlTemplate;
 import org.jumpmind.db.sql.Row;
 import org.jumpmind.db.sql.mapper.StringMapper;
-import org.jumpmind.metl.core.model.Agent;
-import org.jumpmind.metl.core.model.AgentProjectVersionFlowDeployment;
-import org.jumpmind.metl.core.model.Execution;
-import org.jumpmind.metl.core.model.ExecutionStatus;
-import org.jumpmind.metl.core.model.ExecutionStep;
-import org.jumpmind.metl.core.model.ExecutionStepLog;
+import org.jumpmind.metl.core.model.*;
 import org.jumpmind.metl.core.runtime.ExecutionTrackerLogger;
 import org.jumpmind.metl.core.runtime.ExecutionTrackerRecorder;
 import org.jumpmind.metl.core.runtime.IExecutionTracker;
@@ -61,6 +40,14 @@ import org.jumpmind.symmetric.csv.CsvReader;
 import org.jumpmind.util.FormatUtils;
 import org.springframework.core.env.Environment;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.*;
+import java.util.concurrent.ExecutorService;
+
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public class ExecutionService extends AbstractService implements IExecutionService {
 
@@ -99,9 +86,9 @@ public class ExecutionService extends AbstractService implements IExecutionServi
         Collections.sort(steps, new Comparator<ExecutionStep>() {
             @Override
             public int compare(ExecutionStep o1, ExecutionStep o2) {
-                int order = new Integer(o1.getApproximateOrder()).compareTo(new Integer(o2.getApproximateOrder()));
+                int order = Integer.valueOf(o1.getApproximateOrder()).compareTo(Integer.valueOf(o2.getApproximateOrder()));
                 if (order == 0) {
-                    order = new Integer(o1.getThreadNumber()).compareTo(new Integer(o2.getThreadNumber()));
+                    order = Integer.valueOf(o1.getThreadNumber()).compareTo(Integer.valueOf(o2.getThreadNumber()));
                 }
                 return order;
             }

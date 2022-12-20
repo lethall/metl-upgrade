@@ -54,14 +54,14 @@ dependencies {
     api "com.jcraft:jsch:0.1.54"
 //    compile "oauth.signpost:oauth-signpost:1.2.1.2"
     api "org.apache.ant:ant:$antVersion"
-//    compile "javax.jms:javax.jms-api:2.0.1"
-//    compile  "org.apache.activemq:activemq-client:$activeMqVersion"
-//    compile  "org.apache.activemq:activemq-broker:$activeMqVersion"
+    api "javax.jms:javax.jms-api:2.0.1"
+    api  "org.apache.activemq:activemq-client:$activeMqVersion"
+    api  "org.apache.activemq:activemq-broker:$activeMqVersion"
 //    compile "sshtools:j2ssh-ant:0.2.9"
 //    compile "com.googlecode.json-simple:json-simple:1.1.1"
 //    compile "kxml2:kxml2:$kxmlVersion"
 //    compile group: 'org.apache.commons', name: 'commons-pool2', version: '2.4.2'
-//    compile group: 'org.apache.maven', name: 'maven-aether-provider', version: '3.3.9'
+    api 'org.apache.maven:maven-aether-provider:3.3.9'
     api 'org.eclipse.aether:aether-transport-http:1.1.0'
     api 'org.eclipse.aether:aether-transport-file:1.1.0'
     api 'org.eclipse.aether:aether-transport-classpath:1.1.0'
@@ -76,17 +76,17 @@ dependencies {
 //    compile "org.apache.kafka:kafka-clients:$apacheKafkaVersion"
 //
 //    /* TODO: AWS SDK dependencies in resource-core instead? */
-//    compile "com.amazonaws:aws-encryption-sdk-java:${awsEncryptionSdkVersion}"
-//    /* required by aws-encryption-sdk-java: */
-//    compile "com.amazonaws:aws-java-sdk-core:${awsSdkVersion1}"
-//    compile "com.amazonaws:aws-java-sdk-kms:${awsSdkVersion1}"
-//
-//    compile ("software.amazon.awssdk:s3:${awsSdkVersion2}") {
-//        exclude group: 'com.fasterxml.jackson.core'
-//    }
-//    compile ("software.amazon.awssdk:sqs:${awsSdkVersion2}") {
-//        exclude group: 'com.fasterxml.jackson.core'
-//    }
+    api "com.amazonaws:aws-encryption-sdk-java:${awsEncryptionSdkVersion}"
+    /* required by aws-encryption-sdk-java: */
+    api "com.amazonaws:aws-java-sdk-core:${awsSdkVersion1}"
+    api "com.amazonaws:aws-java-sdk-kms:${awsSdkVersion1}"
+
+    api ("software.amazon.awssdk:s3:${awsSdkVersion2}") {
+        exclude group: 'com.fasterxml.jackson.core'
+    }
+    api ("software.amazon.awssdk:sqs:${awsSdkVersion2}") {
+        exclude group: 'com.fasterxml.jackson.core'
+    }
 }
 
 clean.doFirst {
