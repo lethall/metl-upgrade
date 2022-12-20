@@ -20,10 +20,10 @@
  */
 package org.jumpmind.metl.ui.diagram;
 
-import com.vaadin.ui.Component;
-import com.vaadin.ui.Component.Event;
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.ComponentEvent;
 
-public class LinkSelectedEvent extends Event {
+public class LinkSelectedEvent extends ComponentEvent {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,7 +32,7 @@ public class LinkSelectedEvent extends Event {
     String targetNodeId;
 
     public LinkSelectedEvent(Component source, String sourceNodeId, String targetNodeId) {
-        super(source);
+        super(source, false);
         this.sourceNodeId = sourceNodeId;
         this.targetNodeId = targetNodeId;
     }

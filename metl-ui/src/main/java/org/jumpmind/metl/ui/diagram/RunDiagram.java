@@ -20,48 +20,46 @@
  */
 package org.jumpmind.metl.ui.diagram;
 
+import com.vaadin.flow.component.dependency.JavaScript;
+import com.vaadin.flow.component.dependency.StyleSheet;
+
 import java.util.List;
 
-import com.vaadin.annotations.JavaScript;
-import com.vaadin.annotations.StyleSheet;
-import com.vaadin.ui.AbstractJavaScriptComponent;
-
-import elemental.json.JsonArray;
-import elemental.json.JsonObject;
-
+// TODO - this needs redesign
 
 /**
  * TODO: ADB: Refactor the RunDiagram screen to reuse the Diagram screen.
  *
  */
-@JavaScript({ "jquery-2.2.0.min.js", "dom.jsPlumb-1.7.5-min.js", "run-diagram.js" })
-@StyleSheet({ "run-diagram.css" })
-public class RunDiagram extends AbstractJavaScriptComponent {
+@JavaScript("jquery-2.2.0.min.js,dom.jsPlumb-1.7.5-min.js,run-diagram.js")
+@StyleSheet("run-diagram.css")
+//public class RunDiagram extends AbstractJavaScriptComponent {
+public class RunDiagram {
 
     private static final long serialVersionUID = 1L;
 
     public RunDiagram() {
-        setPrimaryStyleName("diagram");
-        setId("run-diagram");
-
-        addFunction("onNodeSelected", (arguments) -> {
-            DiagramState state = getState();
-            List<String> ids = state.selectedNodeIds;
-            ids.clear();
-            if (arguments.length() > 0) {
-                Object obj = arguments.get(0);
-                if (obj instanceof JsonObject) {
-                    JsonObject json = arguments.getObject(0);
-                    if (json.hasKey("nodes")) {
-                        JsonArray nodes = json.getArray("nodes");
-                        for (int i = 0; i < nodes.length(); i++) {
-                            ids.add(nodes.getObject(i).getString("id"));
-                        }
-                    }
-                }
-            }
-            fireEvent(new NodeSelectedEvent(RunDiagram.this, ids));
-        });
+//        setPrimaryStyleName("diagram");
+//        setId("run-diagram");
+//
+//        addFunction("onNodeSelected", (arguments) -> {
+//            DiagramState state = getState();
+//            List<String> ids = state.selectedNodeIds;
+//            ids.clear();
+//            if (arguments.length() > 0) {
+//                Object obj = arguments.get(0);
+//                if (obj instanceof JsonObject) {
+//                    JsonObject json = arguments.getObject(0);
+//                    if (json.hasKey("nodes")) {
+//                        JsonArray nodes = json.getArray("nodes");
+//                        for (int i = 0; i < nodes.length(); i++) {
+//                            ids.add(nodes.getObject(i).getString("id"));
+//                        }
+//                    }
+//                }
+//            }
+//            fireEvent(new NodeSelectedEvent(RunDiagram.this, ids));
+//        });
 
     }
 
@@ -81,9 +79,10 @@ public class RunDiagram extends AbstractJavaScriptComponent {
         getState().nodes.add(node);
     }
 
-    @Override
+//    @Override
     protected DiagramState getState() {
-        return (DiagramState) super.getState();
+        return null;
+//        return (DiagramState) super.getState();
     }
 
     public List<Node> getNodes() {

@@ -23,9 +23,11 @@ package org.jumpmind.metl.ui.diagram;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.vaadin.shared.ui.JavaScriptComponentState;
+// TODO - this needs redesign
+//import com.vaadin.shared.ui.JavaScriptComponentState;
 
-public class DiagramState extends JavaScriptComponentState {
+//public class DiagramState extends JavaScriptComponentState {
+public class DiagramState {
 
     private static final long serialVersionUID = 1L;
     

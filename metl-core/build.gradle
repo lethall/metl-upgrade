@@ -40,7 +40,7 @@ dependencies {
 //    compile "javax.mail:javax.mail-api:$javaMailVersion"
     api "org.jdom:jdom2:$jdomVersion"
 //    compile "javax.el:javax.el-api:3.0.0"
-//    compile "com.h2database:h2:$h2Version"
+    api "com.h2database:h2:$h2Version"
 //    compile "jdbc.postgresql:postgresql:$postgresqlVersion"
 //    compile "net.sourceforge.jtds:jtds:$jtdsVersion"
 //    compile "net.sf.jt400:jt400:$jt400Version"

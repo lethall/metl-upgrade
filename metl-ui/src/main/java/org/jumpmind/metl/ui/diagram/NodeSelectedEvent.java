@@ -20,20 +20,20 @@
  */
 package org.jumpmind.metl.ui.diagram;
 
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.ComponentEvent;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import com.vaadin.ui.Component;
-import com.vaadin.ui.Component.Event;
-
-public class NodeSelectedEvent extends Event {
+public class NodeSelectedEvent extends ComponentEvent {
 
 	private static final long serialVersionUID = 1L;
 
 	List<String> nodeIds = new ArrayList<String>();
 
 	public NodeSelectedEvent(Component source, List<String> nodeIds) {
-		super(source);
+		super(source, false);
 		this.nodeIds = nodeIds;
 	}
 
