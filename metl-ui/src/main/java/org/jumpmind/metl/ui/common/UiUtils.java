@@ -20,20 +20,17 @@
  */
 package org.jumpmind.metl.ui.common;
 
-import static org.apache.commons.lang.StringUtils.isNotBlank;
-
-import java.io.IOException;
-import java.io.InputStream;
-
-import javax.servlet.http.HttpServletRequest;
-
-import com.vaadin.shared.ui.label.ContentMode;
-import com.vaadin.ui.Label;
-
+import com.vaadin.flow.component.html.Label;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.IOUtils;
 import org.jumpmind.exception.IoException;
 import org.jumpmind.metl.ui.definition.XMLComponentUI;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.io.InputStream;
+
+import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 public final class UiUtils {
 
@@ -70,7 +67,7 @@ public final class UiUtils {
                 name = pre + "<span class='highlight'>" + highlighted + "</span>" + post;
             }
         }
-        Label label = new Label(name, ContentMode.HTML);
+        Label label = new Label(name);
         return label;
     }
 

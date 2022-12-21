@@ -20,51 +20,13 @@
  */
 package org.jumpmind.metl.ui.views.design;
 
-import com.vaadin.data.Property.ValueChangeEvent;
-import com.vaadin.data.Property.ValueChangeListener;
-import com.vaadin.event.FieldEvents.TextChangeEvent;
-import com.vaadin.event.FieldEvents.TextChangeListener;
-import com.vaadin.flow.component.AbstractTextField.TextChangeEventMode;
-import com.vaadin.flow.component.Unit;
-import com.vaadin.flow.component.combobox.ComboBox;
-import com.vaadin.flow.component.formlayout.FormLayout;
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
-import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.component.themes.ValoTheme;
-import org.apache.commons.lang.exception.ExceptionUtils;
-import org.jumpmind.metl.core.model.*;
-import org.jumpmind.metl.core.persist.IConfigurationService;
-import org.jumpmind.metl.core.plugin.XMLComponentDefinition;
-import org.jumpmind.metl.core.plugin.XMLComponentDefinition.MessageType;
-import org.jumpmind.metl.core.plugin.XMLComponentDefinition.ResourceCategory;
-import org.jumpmind.metl.core.plugin.XMLResourceDefinition;
-import org.jumpmind.metl.core.plugin.XMLSetting;
-import org.jumpmind.metl.core.plugin.XMLSetting.Type;
-import org.jumpmind.metl.core.runtime.AgentRuntime;
-import org.jumpmind.metl.core.runtime.component.ComponentSettingsConstants;
-import org.jumpmind.metl.core.runtime.flow.StepRuntime;
-import org.jumpmind.metl.core.runtime.resource.IResourceRuntime;
-import org.jumpmind.metl.ui.common.*;
-import org.jumpmind.properties.TypedProperties;
-import org.jumpmind.vaadin.ui.common.CommonUiUtils;
-import org.jumpmind.vaadin.ui.common.ImmediateUpdateTextArea;
-import org.jumpmind.vaadin.ui.common.ImmediateUpdateTextField;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.vaadin.aceeditor.AceEditor;
-import org.vaadin.aceeditor.AceMode;
+import com.vaadin.flow.component.html.Div;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
-
-import static org.apache.commons.lang.StringUtils.isNotBlank;
-import static org.jumpmind.metl.core.runtime.component.ComponentSettingsConstants.*;
+// TODO - massive redesign required
 
 @SuppressWarnings("serial")
-public class PropertySheet extends AbsoluteLayout {
-
+public class PropertySheet extends Div {
+/*
     protected final Logger log = LoggerFactory.getLogger(getClass());
 
     protected static final String DUMMY_PASSWORD = "*****";
@@ -883,5 +845,5 @@ public class PropertySheet extends AbsoluteLayout {
         }
         return step;
     }
-
+*/
 }

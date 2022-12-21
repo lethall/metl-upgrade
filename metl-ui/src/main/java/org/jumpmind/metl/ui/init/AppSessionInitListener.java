@@ -20,23 +20,16 @@
  */
 package org.jumpmind.metl.ui.init;
 
-import org.jsoup.nodes.Element;
-
-import com.vaadin.server.BootstrapFragmentResponse;
-import com.vaadin.server.BootstrapListener;
-import com.vaadin.server.BootstrapPageResponse;
-import com.vaadin.server.CustomizedSystemMessages;
-import com.vaadin.server.ServiceException;
-import com.vaadin.server.SessionInitEvent;
-import com.vaadin.server.SessionInitListener;
-import com.vaadin.server.SystemMessages;
-import com.vaadin.server.SystemMessagesInfo;
-import com.vaadin.server.SystemMessagesProvider;
+import com.vaadin.flow.server.ServiceException;
+import com.vaadin.flow.server.SessionInitEvent;
+import com.vaadin.flow.server.SessionInitListener;
 
 public class AppSessionInitListener implements SessionInitListener {
 
     private static final long serialVersionUID = 1L;
 
+    // TODO - redesign required
+    /*
     @Override
     public void sessionInit(final SessionInitEvent event)
             throws ServiceException {
@@ -76,4 +69,10 @@ public class AppSessionInitListener implements SessionInitListener {
         });
     }
 
+     */
+
+    @Override
+    public void sessionInit(SessionInitEvent event) throws ServiceException {
+
+    }
 }

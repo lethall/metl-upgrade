@@ -20,36 +20,16 @@
  */
 package org.jumpmind.metl.ui.views.admin;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
-import javax.annotation.PostConstruct;
-
-import org.jumpmind.metl.core.model.Plugin;
-import org.jumpmind.metl.core.persist.IPluginService;
-import org.jumpmind.metl.ui.common.ButtonBar;
-import org.jumpmind.metl.ui.common.UIConstants;
-import org.jumpmind.vaadin.ui.common.UiComponent;
-import org.springframework.context.annotation.Scope;
-import org.springframework.core.annotation.Order;
-
-import com.vaadin.data.util.BeanItemContainer;
-import com.vaadin.navigator.ViewChangeListener.ViewChangeEvent;
-import com.vaadin.server.FontAwesome;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Table;
-import com.vaadin.ui.UI;
+// TODO - redesign required
 
 @SuppressWarnings("serial")
-@UiComponent
-@Scope(value = "ui")
-@Order(700)
-@AdminMenuLink(name = "Plugins", id = "Plugins", icon = FontAwesome.PUZZLE_PIECE)
-public class PluginsPanel extends AbstractAdminPanel {
-
+//@UiComponent
+//@Scope(value = "ui")
+//@Order(700)
+//@AdminMenuLink(name = "Plugins", id = "Plugins", icon = FontAwesome.PUZZLE_PIECE)
+public class PluginsPanel {
+//    public class PluginsPanel extends AbstractAdminPanel {
+/*
     Button addButton;
 
     Button removeButton;
@@ -218,11 +198,11 @@ public class PluginsPanel extends AbstractAdminPanel {
         List<Plugin> plugins = pluginService.findUnusedPlugins();
         for (Plugin plugin : plugins) {
             pluginService.delete(plugin);
-            /*
-             * TODO: Before enabling this need to figure out logic to calculate if the
-             * plug-in is required by other plug-ins that ARE currently
-             * referenced
-             */
+//            /  *
+//             * TODO: Before enabling this need to figure out logic to calculate if the
+//             * plug-in is required by other plug-ins that ARE currently
+//             * referenced
+//             *  /
             // context.getPluginManager().delete(plugin.getArtifactGroup(),
             // plugin.getArtifactName(), plugin.getArtifactVersion());
         }
@@ -235,6 +215,8 @@ public class PluginsPanel extends AbstractAdminPanel {
     @Override
     public void enter(ViewChangeEvent event) {
     }
-    
+
+
+ */
 
 }

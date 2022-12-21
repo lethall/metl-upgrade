@@ -20,14 +20,13 @@
  */
 package org.jumpmind.metl.ui.init;
 
+import com.vaadin.flow.server.VaadinSession;
+import org.jumpmind.metl.core.model.User;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import org.jumpmind.metl.core.model.User;
-
-import com.vaadin.server.VaadinSession;
 
 public class AppSession implements Serializable {
 

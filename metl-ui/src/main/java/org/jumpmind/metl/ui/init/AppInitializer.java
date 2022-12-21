@@ -20,37 +20,9 @@
  */
 package org.jumpmind.metl.ui.init;
 
-import static org.apache.commons.lang.StringUtils.isBlank;
-import static org.jumpmind.metl.core.model.GlobalSetting.CONFIG_BACKUP_CRON;
-import static org.jumpmind.metl.core.model.GlobalSetting.CONFIG_BACKUP_ENABLED;
-import static org.jumpmind.metl.core.model.GlobalSetting.DEFAULT_CONFIG_BACKUP_CRON;
-import static org.jumpmind.metl.core.model.GlobalSetting.DEFAULT_CONFIG_BACKUP_ENABLED;
-
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.StandardCopyOption;
-import java.util.Date;
-import java.util.Properties;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.atmosphere.container.JSR356AsyncSupport;
-import org.eclipse.jetty.servlet.DefaultServlet;
 import org.jumpmind.db.platform.IDatabasePlatform;
 import org.jumpmind.db.util.ConfigDatabaseUpgrader;
 import org.jumpmind.exception.IoException;
@@ -86,6 +58,28 @@ import org.springframework.web.context.support.AnnotationConfigWebApplicationCon
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.DispatcherServlet;
 
+import javax.servlet.ServletContext;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.util.Date;
+import java.util.Properties;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+
+import static org.apache.commons.lang.StringUtils.isBlank;
+import static org.jumpmind.metl.core.model.GlobalSetting.CONFIG_BACKUP_CRON;
+import static org.jumpmind.metl.core.model.GlobalSetting.CONFIG_BACKUP_ENABLED;
+import static org.jumpmind.metl.core.model.GlobalSetting.DEFAULT_CONFIG_BACKUP_CRON;
+import static org.jumpmind.metl.core.model.GlobalSetting.DEFAULT_CONFIG_BACKUP_ENABLED;
+
 public class AppInitializer implements WebApplicationInitializer, ServletContextListener {
 
     public static ThreadLocal<AnnotationConfigWebApplicationContext> applicationContextRef = new ThreadLocal<>();
@@ -115,8 +109,9 @@ public class AppInitializer implements WebApplicationInitializer, ServletContext
         dispatcher.addMapping("/api/*");
         applicationContextRef.set(dispatchContext);
 
-        ServletRegistration.Dynamic apidocs = servletContext.addServlet("docs", DefaultServlet.class);
-        apidocs.addMapping("/api.html", "/ws-api.html", "/doc/*", "/ace/*");
+        // TODO - redesign required
+//        ServletRegistration.Dynamic apidocs = servletContext.addServlet("docs", DefaultServlet.class);
+//        apidocs.addMapping("/api.html", "/ws-api.html", "/doc/*", "/ace/*");
         
         Class appServletClazz = AppServlet.class;
         String appServletString = System.getProperty(AppConstants.METL_APP_SERVLET);

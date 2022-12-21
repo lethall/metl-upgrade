@@ -20,75 +20,16 @@
  */
 package org.jumpmind.metl.ui.init;
 
-import static org.jumpmind.metl.core.util.AppConstants.DEFAULT_GROUP;
-import static org.jumpmind.metl.core.util.AppConstants.DEFAULT_USER;
-import static org.jumpmind.metl.ui.common.UiUtils.whereAreYou;
+// TODO - redesign required
 
-import java.math.BigDecimal;
-import java.text.DateFormat;
-import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import com.vaadin.flow.component.UI;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.jumpmind.metl.core.model.AuditEvent;
-import org.jumpmind.metl.core.model.AuditEvent.EventType;
-import org.jumpmind.metl.core.model.Group;
-import org.jumpmind.metl.core.model.GroupPrivilege;
-import org.jumpmind.metl.core.model.Privilege;
-import org.jumpmind.metl.core.model.User;
-import org.jumpmind.metl.core.model.UserGroup;
-import org.jumpmind.metl.core.persist.IOperationsService;
-import org.jumpmind.metl.core.util.VersionUtils;
-import org.jumpmind.metl.ui.common.ApplicationContext;
-import org.jumpmind.metl.ui.common.TopBar;
-import org.jumpmind.metl.ui.common.ViewManager;
-import org.jumpmind.vaadin.ui.common.ResizableWindow;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
-import com.vaadin.annotations.PreserveOnRefresh;
-import com.vaadin.annotations.Push;
-import com.vaadin.annotations.Theme;
-import com.vaadin.annotations.Title;
-import com.vaadin.data.util.converter.Converter;
-import com.vaadin.data.util.converter.DefaultConverterFactory;
-import com.vaadin.data.util.converter.StringToBigDecimalConverter;
-import com.vaadin.data.util.converter.StringToBooleanConverter;
-import com.vaadin.data.util.converter.StringToDateConverter;
-import com.vaadin.data.util.converter.StringToDoubleConverter;
-import com.vaadin.data.util.converter.StringToFloatConverter;
-import com.vaadin.data.util.converter.StringToIntegerConverter;
-import com.vaadin.data.util.converter.StringToLongConverter;
-import com.vaadin.server.DefaultErrorHandler;
-import com.vaadin.server.Responsive;
-import com.vaadin.server.ThemeResource;
-import com.vaadin.server.VaadinRequest;
-import com.vaadin.server.VaadinService;
-import com.vaadin.server.VaadinServlet;
-import com.vaadin.server.VaadinServletRequest;
-import com.vaadin.server.VaadinSession;
-import com.vaadin.shared.communication.PushMode;
-import com.vaadin.shared.ui.MarginInfo;
-import com.vaadin.shared.ui.label.ContentMode;
-import com.vaadin.ui.Alignment;
-import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.TextArea;
-import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.themes.ValoTheme;
-
-@Theme("apptheme")
-@Title("Metl")
-@PreserveOnRefresh
-@Push(value = PushMode.AUTOMATIC)
+//@Theme("apptheme")
+//@Title("Metl")
+//@PreserveOnRefresh
+//@Push(value = PushMode.AUTOMATIC)
 public class AppUI extends UI {
-
+/*
     private static final long serialVersionUID = 1L;
 
     private final Logger log = LoggerFactory.getLogger(getClass());
@@ -331,4 +272,5 @@ public class AppUI extends UI {
     protected ViewManager getViewManager() {
         return getWebApplicationContext().getBean(ViewManager.class);
     }
+ */
 }
